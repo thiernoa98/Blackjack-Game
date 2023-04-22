@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>08.05 - Blackjack Pt 3: Bet, Hit, Stand
+
+    </title>
+
+    <!-- <link href="../../css/basic-pg-console.log.css" rel="stylesheet"> -->
+    <link href="css/deck-of-cards.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="dealer-cards-div"></div>
+        <div id="player-cards-div"></div>
+
+        <!-- <h1>Blackjack, Pt. 3 - Hit</h1>  -->
+        <h2></h2>  
+
+        <div style="padding-top:30px">
+
+            <span id="money">$500</span>
+            
+            <!-- <input type="number" id="bet-menu" min="10" max="1000" step="5" value="10"> -->
+            <select id="bet-menu">
+                <option value="bet">Bet..</option>
+                <!-- <option value="5" data-chips="5">$5</option>
+                <option value="10" data-chips="10">$10</option> -->
+                <option value="15" selected data-chips="10&5">$15</option>
+                <option value="20" data-chips="10&10">$20</option>
+                <option value="25" data-chips="25">$25</option>
+                <option value="35" data-chips="25&10">$35</option>
+                <option value="50" data-chips="50">$50</option>
+                <option value="75" data-chips="50&25">$75</option>
+                <option value="100" data-chips="100">$100</option>
+                <option value="125" data-chips="100&25">$125</option>
+                <option value="150" data-chips="100&50">$150</option>
+                <option value="200" data-chips="100&100">$200</option>
+                <option value="250" data-chips="100&100&50">$250</option>
+                <option value="300" data-chips="100&100&100">$300</option>
+                <option value="400" data-chips="100&100&100&100">$400</option>
+                <option value="500" data-chips="500">$500</option>
+                <option value="600" data-chips="500&100">$600</option>
+                <option value="750" data-chips="500&100&100&50">$750</option>
+                <option value="1000" data-chips="1000">$1000</option>
+                <option value="1250" data-chips="1000&100&100&50">$1250</option>
+                <option value="1500" data-chips="1000&500">$1500</option>
+                <option value="2000" data-chips="1000&1000">$2000</option>
+                <option value="2500" data-chips="1000&1000&500">$2500</option>
+                <option value="3000" data-chips="1000&1000&1000">$3000</option>
+            </select>
+
+            <button id="deal-btn">DEAL</button> &nbsp; &nbsp; 
+
+            <span id="player-score-div"></span>
+            <span id="dealer-score-div"></span>
+
+            <button id="hit-btn" class="disabled-btn" disabled>HIT</button> &nbsp; &nbsp; 
+            <button id="stand-btn" class="disabled-btn" disabled>STAND</button> &nbsp; &nbsp; 
+        </div>
+
+        <div id="chips-bet-div"></div>
+        <!-- <div id="chips-won-box"></div></div> -->
+
+    </div> 
+
+<!-- START .js  -->
+<!-- <script src="js/08.05-Blackjack-Pt-3-Hit-START.js"></script> -->
+
+<!-- PROG .js -->
+<script src="js/08.05-Blackjack-Pt-3-Hit-PROG.js"></script>
+
+<!-- FINAL .js -->
+    <!-- <script src="js/08.05-Blackjack-Pt-3-Hit-FINAL.js"></script> -->
+
+    
+</body>
+
+</html>
+
+
+
+
