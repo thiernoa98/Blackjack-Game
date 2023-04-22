@@ -1,0 +1,17 @@
+/* for use with files that are just springboards to check the console for JS output */
+body { 
+    background-color: #555;
+    color: #555;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.container {
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    border: 3px solid #999;
+    width: 650px;
+    height: 65vh;
+    background-color: #ccc;
+}

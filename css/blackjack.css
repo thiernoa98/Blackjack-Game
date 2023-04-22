@@ -1,0 +1,97 @@
+body {
+    background-color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* app div holds player and dealer card boxes */
+#app {
+    width: 1400px;
+    margin: 0 auto;
+    padding-top: 90px;
+    color: #FFF;
+    background-image: url('../images/blackjack-table.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100vh;
+}
+
+/* the header holds 3 buttons and 4 divs */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1400px;
+    height: 150px;
+    margin: 0 auto;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    background-color: #534545;
+    border-bottom: 5px solid #5E651F;
+}
+
+/* the DEAL, HIT and STAND buttons */
+button {
+    width: 100px;
+    cursor: pointer;
+    margin: 10px;
+    color: #977;
+    font-weight: bold;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    padding: 7px; 17px;
+}
+
+#goBack {
+	position: absolute;
+	bottom: 100px;
+	left: 100px;
+	font-size: 1.5rem;
+	padding: 5px;
+	width: 200px;
+	height: 50px;
+	color: white;
+	background-color: darkblue;
+	border-radius: 7px;
+	margin: 5px 15px;
+	cursor: pointer;
+}
+
+/* 4 divs in the header come after the buttons: messageBox, playerScoreBox, dealerScoreBox and moneyBox */
+header div {
+    margin: 0 10px;
+    width: 150px;
+    height: 30px;
+    background-color: white;
+    color: #265F12;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 3px solid yellowgreen;
+}
+
+/* boxes to hold the cards for player and dealer -- each it its own box */
+#app div {
+    width: 1000px;
+    height: 160px;
+    margin: 0px auto 40px auto;
+    text-align: center;
+    padding: 5px 30px;
+    border: 0px solid red;
+}
+
+img {
+    width: 115px;
+    height: auto;
+    margin: 15px;
+    display: inline-block;
+    transform: perspective(80px) rotateX(10deg);   
+}
+
+
