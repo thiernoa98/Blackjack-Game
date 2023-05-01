@@ -1,38 +1,16 @@
-// Lesson 08.03 - START
-
-// Blackjack - Pt. 1: DEAL..!
-// Review of Lesson 05.04: Making a deck of cards with a nested loop
-// New for Lesson 08.03: Deal Blackjack on a timer with setInterval
-// Keep score and display the score to the DOM
-// Detect Blackjack (21) for the Player, the Dealer -- or both
-// Prompt Player to Hit or Stand
-
-// Review the code for making a deck of cards as array of objects
-
-// 1. Given: Arrays for making and storing the cards:
 const kinds = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
 const suits = ['Diamonds', 'Hearts', 'Spades', 'Clubs'];
 const deck = [];
 
-// 2. Review: Set up a nested for loop that iterates over 
-// the kinds and suits arrays:
-// for (let k = 0; k < kinds.length; k++) {
-    
-//     for (let s = 0; s < suits.length; s++) {
+
 kinds.forEach(kind=>{
 
     suits.forEach(suit=>{
-        // 3. Simplify the current array items by passing them to variables:
-        // let kind = kinds[k];
-        // let suit = suits[s];
 
-        // 4. Concatenate the card name and image file names:
-        // - name "Queen of Diamonds" corresponds to file "Queen-of-Diamonds.png"
         let name = `${kind} of ${suit}`;
         let file = `${kind}-of-${suit}.png`;
 
-        // 5. Declare a variable, valu, with an inital value of 0;
-        // - valu is for storing the numeric value of the card
+        //Declaring a variable, valu, with an inital value of 0;
         let valu = 0;
 
         // 6. Set the valu property based on the kind of card
@@ -634,5 +612,3 @@ function bet() {
 //just display the bet() function to get the first/index bet amount
 bet();
 
-// END: Lesson 08.03
-// NEXT: Lesson 08.04
