@@ -90,10 +90,7 @@ const playerCardDiv = document.getElementById('player-cards-div');
 const dealerScoreDiv = document.getElementById('dealer-score-div');
 const playerScoreDiv = document.getElementById('player-score-div');
 
-// 14. Declare global vars need for keeping track of the deal
-// - arrays for holding player and dealer cards 
-// variables for keeping score:
-// - dealCounter keeps track of total cards dealt
+// Declaring global vars to keeping track of the deal
 let dealCounter = 0;
 let playerHand = [];
 let dealerHand = [];
@@ -105,25 +102,10 @@ let pAceScore = 0;
 let dAceScore = 0;
 
 
-// DEAL
-// Now, that we have the shoe, let's deal a hand of Blackjack. We dealt a hand of
-// poker in the earlier lesson where we made the shoe of cards, BUT this will be
-// different: to better emulate game play, we will use setInterval to deal on a 
-// 1-second delay between cards
-// the deal consists of 2 hands -- player and dealer -- each of whom get 2 cards
-// the dealer's first card is dealt face down -- the "hole card"
-
-// 15. Define the deal function:
 function deal() {
-    //display the chips after you hit the deal button
     bet();
 
     promptH2.textContent = 'Good Luck...'
-    // 16. Since this is a new hand, reset the scores and "clear the table"
-    // - reset the player and dealer scores
-    // - empty the divs that display the cards
-    // - clear the text from the output h2
-    // - empty the arrays that store the player and dealer handsdealCounter = 0;
     dealCounter = 0;
     dealerScore = 0;
     playerScore = 0;
@@ -135,41 +117,30 @@ function deal() {
     playerScoreDiv.innerHTML = 'Player Score: 0';
     dealerScoreDiv.innerHTML = 'Dealer Score: 0';
 
-    // 17. Call the setInterval method with its callback function, set equal to a variable,
-    // myInterval, which will be used to clear the interval (stop deal)
     let dealInterval = setInterval(()=>{
-        // 18. Increment the counter that keeps track of how many card have been dealt
+        // Increment the counter that keeps track of how many card have been dealt
         dealCounter ++;
 
-        // 19. If this is the 4th card being dealt, clear the interval (stop the deal)
         if (dealCounter == 4) {
             //stop after 4 draws
             clearInterval(dealInterval);
         }
 
-        // 20. Instantiate a new image object to hold the card image
         let pic = new Image();
 
-        // 21. Pop a card object off the shoe array and save it as a new card
+        //Pop a card object off the shoe array and save it as a new card
         let card = shoe.pop();
 
-        // 22. If this is not the 2nd card / 1st dealer card, set the image 
-        // source equal to the card image file path:
         if (dealCounter != 2) {
             pic.src = `images/cards350px/${card.file}`;
-        // 23. ELSE if this IS the 1st dealer card; deal the "hole card" 
-        // face-down by setting its source equal to the back of the card image
+            
         }else{
+            //display red card
             pic.src = `images/cards350px/0-Back-of-Card-Red.png`;
         }
 
 
 
-       // 24. Set up an if-else statement to handle the logic for dealing two cards 
-       // each to player and dealer, starting with the player.
-       // Th if condition uses the % mod operator to check the remainder 
-       // when the counter is divided by 2. If the remainder is 1, this is 
-       // the 1st or 3rd card, which goes to the player
         if (dealCounter % 2 == 1) {
  
             // 25. Output the card to the player's div
