@@ -10,49 +10,35 @@ kinds.forEach(kind=>{
         let name = `${kind} of ${suit}`;
         let file = `${kind}-of-${suit}.png`;
 
-        //Declaring a variable, valu, with an inital value of 0;
         let valu = 0;
 
-        // 6. Set the valu property based on the kind of card
+        // Setting the value property based on the kind of card
         // - the length of the kind string reveals if it is a face card
         // as only "Jack", "Queen", "King" have more than 3 characters
         if (kind.length == 3) {
-            //the card 'Ace' is 3 length
             valu = 11;
         }else if(kind.length >= 4){
-            //now display the other kinds longer than 3 
+            //display the other kinds longer than 3 
             valu = 10;
         }else{
-            //display the numbers now
+            //display the numbers 
             valu = kind
         }
-        // Review: Each card is an object with 5 properties:
-        /* 
-            - name: the name of the card: "Jack of Hearts"
-            - file: the card file name: "Jack-of-Hearts.png"
-            - kind: 2-10, 'Jack', 'Queen', 'King', 'Ace'
-            - suit: 'Diamonds', 'Hearts', 'Spades', 'Clubs'
-            - valu: numeric value; face card = 10, Ace = 11
-        */
 
-        // 7. Declare a card object with the 5properties, the values of which are
-        // the 5 corresponding variables 
+
         const card = {name:name, file:file, kind:kind, suit:suit, valu: valu};
-        // 8. Push the card object into the deck array:
         deck.push(card);
 
     })//end of suit   
 })//end of first forEach kind
-    //}//close inner suit loop
-//} //outer loop ends
 
-// console.log(deck);
 
-// 9A. Review: Shuffle (randomize) the deck:
+
+
+// Shuffle (randomize) the deck:
 deck.sort(()=>Math.random() - 0.5); 
-console.log('suffled deck', deck);
 
-//9B. fisher-yates shufflee
+// fisher-yates shufflee
 for (let i = 0; i < deck.length; i++) {
     let temp = deck[i];
 
@@ -61,7 +47,6 @@ for (let i = 0; i < deck.length; i++) {
     deck[rand] = temp;    
 }
 
-//9C. for each with fisher-yates
 deck.forEach((e,i,arr)=>{
 
     let rand = Math.floor(Math.random() * arr.length)
@@ -69,17 +54,12 @@ deck.forEach((e,i,arr)=>{
     arr[rand] = e;    
 })
 
-// 10. Review: Make a shoe consisting of 6 decks of cards, using the spread ... operator
 const shoe = [...deck, ...deck, ...deck, ...deck, ...deck, ...deck];
-console.log(shoe);
-// 11. Review: Shuffle (randomize) the shoe:
 
-
-// 9A. Review: Shuffle (randomize) the deck:
+// Shuffling the shoe of cards
 shoe.sort(()=>Math.random() - 0.5);
-// console.log('suffled shoe', shoe);
 
-//9B. fisher-yates shufflee
+//fisher-yates shufflee
 for (let i = 0; i < shoe.length; i++) {
     let temp = shoe[i];
 
@@ -88,7 +68,6 @@ for (let i = 0; i < shoe.length; i++) {
     shoe[rand] = temp;    
 }
 
-//9C. for each with fisher-yates
 shoe.forEach((e,i,arr)=>{
 
     let rand = Math.floor(Math.random() * arr.length)
@@ -96,24 +75,18 @@ shoe.forEach((e,i,arr)=>{
     arr[rand] = e;    
 })
 
-// 12. Get the DOM elements:
-// - Get the DEAL button and assign a listener for calling the deal function when clicked
+//The DOM elements:
 const dealBtn = document.getElementById('deal-btn');
 dealBtn.addEventListener('click', deal);
 
-// - Get the HIT and STAND buttons, which won't be assigned listeners yet
 const hitBtn = document.getElementById('hit-btn');
 const standBtn = document.getElementById('stand-btn');
 
-// - Get the h2, which will be used for outputting prompts ("HIT or STAND?", etc.)
 const promptH2 = document.querySelector('h2');
 
-// 13. Get the divs that hold the player and dealer hands and 
-// that display the player and dealer scores
 const dealerCardDiv= document.getElementById('dealer-cards-div');
 const playerCardDiv = document.getElementById('player-cards-div');
 
-//scores
 const dealerScoreDiv = document.getElementById('dealer-score-div');
 const playerScoreDiv = document.getElementById('player-score-div');
 
