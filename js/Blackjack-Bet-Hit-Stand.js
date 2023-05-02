@@ -142,112 +142,72 @@ function deal() {
 
 
         if (dealCounter % 2 == 1) {
- 
-            // 25. Output the card to the player's div
+            
             playerCardDiv.appendChild(pic);
-            // 26. Push the card into the player's hand
             playerHand.push(card);
 
-            // card.kind = 'Ace';
-
-            //if the card is Ace, or if we get two Aces, the score 1Ace =11 + 1 Ace =1
             if (card.kind == 'Ace') {
-                //player already has an Ace, so do this
                 if (pAceScore == 11) {
-                    pAceScore = 12; //if we get another Ace, the second Ace is 1
-                    //set the value to 1
+                    pAceScore = 12; 
                     card.valu = 1;
                 }else{
                     pAceScore = 11;
                 }
 
             }
-
-            // 27. Increment the player's score
             playerScore += card.valu;
-        // 28. Add the else part to handle dealers dealt to the dealer
         }else{
-            // 29. Make the dealer cards a bit smaller, to make them appear farther away
             pic.style.width = '105px';
             pic.style.height = 'auto';
-
-            // 30. Output the card to the dealer's div
+            
             dealerCardDiv.appendChild(pic);
-
-            // 31. Push the card into the dealer's hand
             dealerHand.push(card);
-
-            //if the card is Ace, or if we get two Aces, the score 1Ace =11 + 1 Ace =1
+            
             if (card.kind == 'Ace') {
-                //player already has an Ace, so do this
                 if (dAceScore == 11) {
-                    dAceScore = 12; //if we get another Ace, the second Ace is 1
-                    //set the value to 1
+                    dAceScore = 12; 
                     card.valu = 1;
                 }else{
                     dAceScore = 11;
                 }
 
             }
-            // 32. Update the dealer's score
+            // Update the dealer's score
             dealerScore += card.valu;
-            // playerScore = 21;
-            // dealerScore = 21
         }
-        // 33. Update "Dealer Show"s" once the deal ends--this is not
-        // the dealer's score, just the value of the ONE card that IS showing
-        // this value equals the dealer's score minus the value of the the hole card
 
-        //showing the dealere's hidden card after the draw is over, after 4 draws/cards
         if (dealCounter == 4) {
            
-            // dealerScoreDiv.innerHTML = 'dealer Shows '+ dealerHand[0].valu;
             dealerScoreDiv.innerHTML = 'dealer Shows '+ dealerHand[1].kind;
             playerScoreDiv.innerHTML = 'player Shows '+ playerScore;
-            // 34. Log the dealer's hidden hand and secret score to the console
-            console.log('dealer score: ', dealerScore, 'player score: ', playerScore);
-            // 35. If no one has blackjack, deactivate the DEAL button so that it cannot be clicked again
-            setTimeout(()=>{
-                //if both has a 21
 
+            setTimeout(()=>{
                 if (playerScore == 21 && dealerScore == 21) {
 
                     promptH2.textContent = 'Both have black Jack! Its a push'
                     holeCard = document.getElementById('dealer-cards-div').children[0]
                     holeCard.src = `images/cards350px/${dealerHand[0].file}`;
 
-                // 38. Prompt the player to "HIT or STAND?"..for better game play pacing, 
-                // do the prompt on a 2-second delay with setTimeout
-
                 }else if(playerScore == 21){
                     promptH2.textContent = 'BlackJack!!! You win!'
                     //update the player bet money
-                    playerMoney+=betAmount * 1.5 //if blackjack, you win more
+                    playerMoney+=betAmount * 1.5 
                     moneySpan.textContent = '$' + playerMoney;
 
                 }else if(dealerScore == 21){
                     promptH2.textContent = 'BlackJack!!! Dealer won!', 1500;
-
-                    //update the player bet money with less money
+                    
                     playerMoney-=betAmount
                     moneySpan.textContent = '$' + playerMoney;
 
-                    //show the hidden card if dealer hit black jack
-                    //children [0] get the first element of the div, first ppic here
                     let holeCard = document.getElementById('dealer-cards-div').children[0] 
                     holeCard.src = `images/cards350px/${dealerHand[0].file}`;
                 }else{
                     //none has a blackjack
-
-                    // 36. Mute the color of the DEAL button so that it looks unclickable
-                    //disabled-btn is from the css which turn off the button
-                    dealBtn.classList.add('disabled-btn') //disabled-btn is from the css 
-
-                    //36B make the deal button unclickable by setting disabled to true
+                    dealBtn.classList.add('disabled-btn') 
+                    
                     dealBtn.disabled = true;
-
-                    // 37. remove the disabled HIT and STAND buttons 
-                    //so they appear clickable, disabled-btn disbale the buttons
+                    
                     hitBtn.classList.remove('disabled-btn'); // remove the css
                     standBtn.classList.remove('disabled-btn'); //remove the css
 
