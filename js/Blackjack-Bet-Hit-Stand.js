@@ -208,84 +208,64 @@ function deal() {
                     
                     dealBtn.disabled = true;
                     
-                    hitBtn.classList.remove('disabled-btn'); // remove the css
-                    standBtn.classList.remove('disabled-btn'); //remove the css
+                    hitBtn.classList.remove('disabled-btn');
+                    standBtn.classList.remove('disabled-btn'); 
 
-                    //37B make the deal button unclickable by setting disabled to false
-                    //because now we can click it
                     hitBtn.disabled = false;
                     standBtn.disabled = false;
 
-                    //none has 21, no blackjack
-                    //show the below text if none has 21
-                     promptH2.textContent = 'Hit or Stand? '
+                   promptH2.textContent = 'Hit or Stand? '
                 }
-            },1500) //end of setTimeout
+            },1500) 
 
-
-            // 39. Check to see if either the player or dealer have Blackjack
-            // Announce Blackjack on 1 second delay; if no one has Blackjack,
-            // prompt player to HIT or STAND:
     
-        }//40. Set the setInterval timer for the card dealing to repeat every 1 second:
+        }
 
-    },1000)//end of setInterval(); //1000 is 1 sec
-}//function ends
+    },1000)
+}
 
-//the hit button
+
 hitBtn.addEventListener('click', hit)
 
 function hit() {
 
     setTimeout(()=>{
-        //getting the shuffled cards
-        const card = shoe.pop(); //get the last card
-        //set a new image
+        //get the shuffled cards
+        const card = shoe.pop(); 
+        
         const pic = new Image();
         pic.src = `images/cards350px/${card.file}`;
-        //add the new photo
+
         playerCardDiv.appendChild(pic);
 
         if (card.kind == 'Ace') {
-            //check if player score is less than 11
-            //if so, increament polayer score by 11
-            //also increment increase the playerAceScore by 11
+
             if (playerScore < 11) {
-                playerScore +=11 // if player score is less 11, then Ace is counted 11
+                playerScore +=11 
                 pAceScore = 11;
             }else{
-                //else the player score is already 11, just add one by increment
                 playerScore ++; 
                 pAceScore ++;
             }
         }else{
-            //if its not an Ace just add its value to the player score
             playerScore += card.valu; 
-            //check if hit card has busted > 21
             if (playerScore > 21) {
                 
-                //if player score is over 21 but has an ace, 'unbust it
                 if (pAceScore >= 11) {
-                    //reduce the score
                     pAceScore -=10;
                     playerScore -=10;
                 }else{
-                    //the player does not have an Ace 11, so busted
                     promptH2.textContent = 'Busted! You Lose!';
 
-                    //update the player bet money
                     playerMoney-=betAmount
                     moneySpan.textContent = '$' + playerMoney;
 
-                    //enable the deal button
                     dealBtn.disabled = false;
                     dealBtn.classList.add('enabled-btn');
                 }
             }else if (playerScore == 21) {
-                //if you hit 21, then you're done and its dealers turn
                 promptH2.textContent = 'you have 21! Dealer turn!';
 
-                //after you hit and get 21, automatically do the stand
                 stand(); 
             }else{
                 promptH2.textContent = 'Hit or Stand...?';
@@ -293,10 +273,9 @@ function hit() {
             
         
         }
-        //display the updated score
         playerScoreDiv.textContent = `player shows ${playerScore}`;
     }, 1500)
-}//end of hit function
+}
 
 
 // 41. Run the file in the browser and click DEAL, being sure to check the 
