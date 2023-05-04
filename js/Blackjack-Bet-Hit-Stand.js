@@ -325,44 +325,33 @@ function stand() {
                 dealerScoreDiv.textContent = `Dealer Score: ${dealerScore}`;
 
             }else{
-                //not an  ace just add the card valu to the score
                 dealerScore += card.valu;
-
-                //check if dealer past 21, busted, unbust if there's an Ace
                 if (dealerScore > 21) {
-                    
-                    //checking if the Ace card busted the dealer, then minus 10 to that
+                   
                     if (dAceScore >= 11) {
                         dAceScore-= 10;
                         dealerScore-=10
 
                         dealerScoreDiv.textContent = `Dealer Draw: ${dealerScore}`;
 
-                        //after unbusting, give the dealer another card? check
                         if (dealerScore < 17 || (dealerScore == 17 && dAceScore >= 11)) {
-                            //call the function
                             stand();
                         }
 
                     }else{
-                        //no Ace card
                         dealerScoreDiv.textContent = `Dealer Score: ${dealerScore}`;
                         promptH2.textContent = `Dealer Busted at ${dealerScore}! You Win!`;
 
-                        //update the player bet money
                         playerMoney+=betAmount
                         moneySpan.textContent = '$' + playerMoney;
 
-                        //enable the deal button
                         dealBtn.disabled = false;
                         dealBtn.classList.add('enabled-btn');
                     }
-                    //does dealer get another card?
                 }else if(dealerScore < 17 || (dealerScore == 17 && dAceScore >= 11)){
                     dealerScoreDiv.textContent = `Dealer Score: ${dealerScore}`;
                     stand();
                 }else{
-                    //dealer don't get another card
                     dealerScoreDiv.textContent = `Dealer Score: ${dealerScore}`;
 
                     if (dealerScore == 21) {
@@ -370,21 +359,17 @@ function stand() {
                     }else{
                         promptH2.textContent = `Dealer stands on ${dealerScore}`
                     }
-                    //declearwinner, because can't get another card
                     anounceWinner();
                 }
             }
         }else{
-            //if dealer doesn't have a soft 17 or...
             dealerScoreDiv.textContent = `Dealer Score: ${dealerScore}`;
-
-            //dealer got a hard 17, hence declare winner
             anounceWinner();
         }
 
     }, 2000)
 
-} //end of stand function
+} 
 
 //anounceWinner
 function anounceWinner() {
