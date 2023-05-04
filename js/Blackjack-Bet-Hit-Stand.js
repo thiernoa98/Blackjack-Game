@@ -278,8 +278,6 @@ function hit() {
 }
 
 
-// 41. Run the file in the browser and click DEAL, being sure to check the 
-// console for the shuffled deck, shuffled shoe and dealer hand / score
 standBtn.addEventListener('click', stand)
 
 function stand() {
@@ -291,13 +289,7 @@ function stand() {
 
     setTimeout(()=>{
         promptH2.textContent = "Stand! Dealer's turn...";
-
-        //show the hidden card when it's dealer's turn/stand
-        // holeCard = document.getElementById('dealer-cards-div').children[0]
-        // holeCard.src = `images/cards350px/${dealerHand[0].file}`;
         dealerCardDiv.children[0].src = `images/cards350px/${dealerHand[0].file}`;
-
-        //show dealer score
         dealerScoreDiv.textContent = `Dealer Score: ${dealerScore}`
 
     },1000);
@@ -305,40 +297,28 @@ function stand() {
    
     setTimeout(()=>{
 
-        //if dealer has a soft 17 or score 17
         if (dealerScore < 17 || (dealerScore == 17 && dAceScore >= 11)) {
-            //dAceScore >= 11 the Ace card
-            // dealerScoreDiv.textContent = `Dealer Score: ${dealerScore}`;
 
-            //adding dealer's new image
             let pic = new Image();
             let card = shoe.pop();
             pic.src = `images/cards350px/${card.file}`;
             dealerCardDiv.appendChild(pic);
             dealerHand.push(card);
-
-            //check if card is an 'ACe'
+            
             if (card.kind == 'Ace') {
-                //does the Ace card count as 11 or 1 ? 11 if dealerScore is less than 11
                 if (dealerScore < 11) {
-                    //Ace count as 11 here since score is less 
                     dealerScore+=11;
                     dAceScore+=11;
                 } else{
-                    //more than 11? Ace is 1
-                    dealerScore ++; // just increment, it'll keep on adding ones only
+                    dealerScore ++; 
                     dAceScore++;
                 }
-
                 if (dealerScore < 17 || (dealerScore == 17 && dAceScore >= 11)) {
                     promptH2.textContent = `Ace! Dealer get another Card...`;
-
-                    //calling the function to expection itself
-                    stand(); //draw anothr card automatically, recursive func
+                    
+                    stand();
                 }else{
                     promptH2.textContent = `Dealer Stand`;
-
-                    //dealer get a hard 17, anounce winner
                     anounceWinner();
                 }
 
