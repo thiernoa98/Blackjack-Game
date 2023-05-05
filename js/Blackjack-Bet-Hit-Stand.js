@@ -407,33 +407,29 @@ function anounceWinner() {
 }
 
 
-//bet() funtion
+
 let playerMoney = 500;
 let betAmount = 0;
-// get the betMenu, players money...
+
 let moneySpan = document.getElementById('money');
 let betMenu = document.getElementById('bet-menu');
 let chipsDiv = document.getElementById("chips-bet-div");
 betMenu.addEventListener('change', bet);
-//assing the postion of the chips
+
 let chipLeftPos = 0;
 
 function bet() {
-    chipsDiv.innerHTML = ''; //clear the chip every time
-    chipLeftPos = 0; //
-    betAmount = Number(betMenu.value); //the values from the options value in html
+    chipsDiv.innerHTML = ''; 
+    chipLeftPos = 0; 
+    betAmount = Number(betMenu.value);
 
-    //get the data-cips from the html options data-chips="50"...
-    let index = betMenu.selectedIndex; // give out 11
+    let index = betMenu.selectedIndex;
     let option = betMenu.options[index];
-    let chipNums = option.dataset.chips; //'50&25'
+    let chipNums = option.dataset.chips; 
 
-    //make array out of the chips
     let chipNumsArr = chipNums.split('&');
     console.log('will it work? ', betAmount, chipNums, chipNumsArr);
 
-    //loop through the chips
-    // chipNumsArr.forEach(num=>{
 
     let chipInterval = setInterval(()=>{
         //remove the item in the array till it's done
@@ -443,17 +439,14 @@ function bet() {
         pic.src = `images/chips/chip-${chipNum}.png`;
         pic.className = 'chipper';
         chipsDiv.appendChild(pic);
-        chipLeftPos +=60; //the posion between the coins/chips
+        chipLeftPos +=60; 
         pic.style.left = chipLeftPos + 'px';
 
-        //
         if (!chipNumsArr.length) {
             clearInterval(chipInterval);
         }   
     },400)
-    // })
 }
 
-//just display the bet() function to get the first/index bet amount
 bet();
 
