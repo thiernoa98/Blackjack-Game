@@ -374,7 +374,6 @@ function stand() {
 //anounceWinner
 function anounceWinner() {
     //determine the winner after dealer past get a hard 17 or past that
-
     setTimeout(()=>{
         if (playerScore > dealerScore) {
             promptH2.textContent = 'Congratulations! You Win!'
@@ -386,11 +385,9 @@ function anounceWinner() {
             playerMoney-=betAmount;
             moneySpan.textContent = '$' + playerMoney;
         }else{
-            //it's a tie or a push while dealer score is < 22
             dealerScore < 22 ? promptH2.textContent =  'It\'s a PUSH..!' :'';
         }
 
-        //turn on the Deal button and off the hit and stand btns
         dealBtn.disabled = false;
         dealBtn.classList.add('enabled-btn');
 
