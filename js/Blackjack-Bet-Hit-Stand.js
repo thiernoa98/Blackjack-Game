@@ -30,7 +30,7 @@ kinds.forEach(kind=>{
         deck.push(card);
 
     })//end of suit   
-})//end of first forEach kind
+})
 
 
 
